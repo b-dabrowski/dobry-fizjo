@@ -102,6 +102,40 @@ a {
   background-clip: text;
 }
 
+@keyframes gradientShift {
+  0% {
+    transform: translate3d(-4%, -4%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6%, 6%, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(-4%, -4%, 0) scale(1);
+  }
+}
+
+@keyframes parallaxDots {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 120px 120px;
+  }
+}
+
+.animate-gradient-shift {
+  animation: gradientShift 18s ease-in-out infinite;
+}
+
+.animate-gradient-shift-delayed {
+  animation: gradientShift 22s ease-in-out infinite reverse;
+  animation-delay: -6s;
+}
+
+.animate-parallax-dots {
+  animation: parallaxDots 20s linear infinite;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 1rem;
