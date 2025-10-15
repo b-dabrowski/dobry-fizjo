@@ -1,99 +1,104 @@
 'use client'
 
-import { Check, Phone, Mail, Calendar } from 'lucide-react'
+import { Calendar, Check, Mail, Phone } from 'lucide-react'
 
 const pricingPlans = [
   {
-    name: 'Pierwsza wizyta',
+    name: 'Diagnoza startowa',
     price: '220 zł',
     duration: '60 minut',
-    description: 'Kompleksowa diagnostyka i opracowanie planu terapii',
+    description: 'Kompleksowa ocena funkcjonalna i mapa priorytetów terapeutycznych.',
     features: [
-      'Szczegółowy wywiad medyczny',
-      'Badanie fizykalne i ocena stanu',
-      'Indywidualny plan leczenia',
-      'Ustalenie celów i harmonogramu',
-      'Edukacja pacjenta',
-      'Program ćwiczeń domowych'
+      'Analiza ruchu i testy funkcjonalne',
+      'Plan kinetycznej terapii krok po kroku',
+      'Program ćwiczeń do domu',
+      'Rekomendacje sprzętowe i regeneracyjne',
     ],
-    popular: true
+    popular: true,
   },
   {
-    name: 'Kolejna wizyta',
+    name: 'Sesja terapeutyczna',
     price: '220 zł',
     duration: '45-60 minut',
-    description: 'Sesja terapeutyczna z licencjonowanym fizjoterapą',
+    description: 'Połączenie terapii manualnej, neuromobilizacji i treningu medycznego.',
     features: [
-      'Indywidualne podejście do leczenia',
-      'Monitorowanie postępów',
-      'Instrukcja ćwiczeń',
-      'Techniki terapii manualnej',
-      'Trening z wykorzystaniem sprzętu',
-      'Aktualizacja programu domowego'
+      'Indywidualny protokół zabiegowy',
+      'Aktywny trening w oparciu o cele ruchowe',
+      'Monitorowanie progresu',
+      'Aktualizacja planu domowego',
     ],
-    popular: false
-  }
+    popular: false,
+  },
 ]
 
+const paymentOptions = ['Płatność gotówką', 'Karty płatnicze', 'Przelewy online', 'BLIK']
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="section-padding bg-white">
-      <div className="container">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Przejrzysty <span className="text-gradient">Cennik</span>
+    <section
+      id='pricing'
+      className='section-padding relative overflow-hidden bg-[#041826]'
+    >
+      <div className='pointer-events-none absolute inset-0'>
+        <div className='absolute inset-x-0 top-0 mx-auto h-72 w-[520px] rounded-full bg-[radial-gradient(circle,_rgba(20,184,166,0.25),transparent_70%)] blur-3xl' />
+        <div className='absolute -bottom-28 right-10 h-72 w-72 rounded-[45%] bg-[radial-gradient(circle,_rgba(249,115,22,0.18),transparent_70%)] blur-3xl' />
+        <div
+          className='absolute inset-0 opacity-15'
+          style={{
+            backgroundImage: 'radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)',
+            backgroundSize: '46px 46px',
+          }}
+        />
+      </div>
+
+      <div className='container relative z-10 text-slate-200'>
+        <div className='mb-16 text-center'>
+          <h2 className='mb-6 text-4xl font-bold md:text-5xl'>
+            Przejrzysty <span className='text-gradient'>Cennik</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Jakościowa opieka fizjoterapeutyczna nie musi być droga. Oferuję konkurencyjne ceny 
-            i elastyczne podejście, aby leczenie było dostępne dla każdego.
+          <p className='mx-auto max-w-3xl text-xl text-slate-400'>
+            Wysoka intensywność pracy, nowoczesna diagnostyka i indywidualny plan kinezyterapii w uczciwych, prostych
+            pakietach cenowych.
           </p>
         </div>
 
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
-          {pricingPlans.map((plan, index) => (
-            <div 
-              key={index}
-              className={`card relative ${
-                plan.popular 
-                  ? 'border-2 border-primary-500 shadow-xl scale-105' 
-                  : 'border border-gray-200'
+        <div className='mx-auto mb-16 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2'>
+          {pricingPlans.map((plan) => (
+            <div
+              key={plan.name}
+              className={`relative overflow-hidden rounded-[2.5rem] border border-emerald-300/30 bg-[#052235]/85 p-10 shadow-[0_38px_90px_-45px_rgba(20,184,166,0.7)] transition duration-300 hover:-translate-y-1 hover:border-emerald-200/60 hover:bg-[#062b42]/90 ${
+                plan.popular ? 'md:scale-105' : ''
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-primary-500 text-white px-6 py-2 rounded-full text-sm font-semibold">
-                    Most Popular
+                <div className='absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2'>
+                  <span className='rounded-full border border-emerald-300/50 bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-400 px-6 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-slate-900 shadow-[0_20px_45px_-25px_rgba(20,184,166,0.75)]'>
+                    Najczęściej wybierana
                   </span>
                 </div>
               )}
 
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">
-                  {plan.name}
-                </h3>
-                <div className="text-4xl font-bold text-primary-600 mb-2">
-                  {plan.price}
-                </div>
-                <p className="text-gray-500">{plan.duration}</p>
-                <p className="text-gray-600 mt-4">{plan.description}</p>
+              <div className='mb-6 text-center'>
+                <h3 className='text-xl font-semibold text-slate-100'>{plan.name}</h3>
+                <div className='mt-2 text-4xl font-bold text-emerald-200'>{plan.price}</div>
+                <p className='text-xs uppercase tracking-[0.4em] text-slate-500'>{plan.duration}</p>
+                <p className='mt-4 text-sm text-slate-400'>{plan.description}</p>
               </div>
 
-              <ul className="space-y-3 mb-8">
-                {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-3">
-                    <Check className="w-5 h-5 text-primary-500 flex-shrink-0" />
-                    <span className="text-gray-600">{feature}</span>
+              <ul className='mb-8 space-y-3 text-sm text-slate-300'>
+                {plan.features.map((feature) => (
+                  <li key={feature} className='flex items-start gap-3'>
+                    <Check className='mt-1 h-4 w-4 text-emerald-300' />
+                    <span>{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <button 
-                className={`w-full py-3 rounded-lg font-semibold transition-all ${
+              <button
+                className={`w-full rounded-full px-6 py-3 text-xs font-semibold uppercase tracking-[0.4em] transition ${
                   plan.popular
-                    ? 'bg-primary-500 text-white hover:bg-primary-600'
-                    : 'bg-gray-100 text-gray-800 hover:bg-primary-50 hover:text-primary-600'
+                    ? 'bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-400 text-slate-900 shadow-[0_24px_60px_-30px_rgba(20,184,166,0.85)] hover:shadow-[0_28px_70px_-32px_rgba(249,115,22,0.6)]'
+                    : 'border border-emerald-300/40 bg-[#041e30]/80 text-emerald-200 hover:border-emerald-300/60 hover:text-emerald-100'
                 }`}
               >
                 Umów wizytę
@@ -102,83 +107,50 @@ export default function PricingSection() {
           ))}
         </div>
 
-        {/* Payment Information */}
-        <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-8 mb-16">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">
-              Opcje Płatności
-            </h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Oferuję elastyczne opcje płatności, aby leczenie było dostępne 
-              i wygodne dla każdego pacjenta.
+        <div className='mb-16 grid grid-cols-1 gap-8 rounded-[2.75rem] border border-emerald-300/25 bg-[#05263c]/80 p-10 shadow-[0_42px_95px_-48px_rgba(20,184,166,0.6)] backdrop-blur md:grid-cols-2'>
+          <div>
+            <h3 className='text-lg font-semibold text-slate-100'>Elastyczne modele płatności</h3>
+            <p className='mt-4 text-sm text-slate-400'>
+              Dopasuj formę rozliczeń do swoich potrzeb. Możesz łączyć metody lub rozliczać pakiety terapii.
             </p>
           </div>
-
-          <div className="max-w-2xl mx-auto">
-            {/* Payment Options */}
-            <div>
-              <h4 className="text-lg font-semibold text-gray-800 mb-4 text-center">
-                Akceptowane Formy Płatności
-              </h4>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm">
-                  <Check className="w-5 h-5 text-primary-500" />
-                  <span className="text-gray-700">Płatność gotówką</span>
-                </div>
-                <div className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm">
-                  <Check className="w-5 h-5 text-primary-500" />
-                  <span className="text-gray-700">Karty płatnicze (Visa, Mastercard)</span>
-                </div>
-                <div className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm">
-                  <Check className="w-5 h-5 text-primary-500" />
-                  <span className="text-gray-700">Przelewy bankowe</span>
-                </div>
-                <div className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm">
-                  <Check className="w-5 h-5 text-primary-500" />
-                  <span className="text-gray-700">Blik</span>
-                </div>
+          <div className='grid gap-3 text-sm text-slate-300'>
+            {paymentOptions.map((option) => (
+              <div
+                key={option}
+                className='flex items-center gap-3 rounded-2xl border border-emerald-300/25 bg-[#041f31]/80 p-3 shadow-[0_22px_55px_-38px_rgba(249,115,22,0.55)]'
+              >
+                <Check className='h-4 w-4 text-emerald-300' />
+                <span>{option}</span>
               </div>
-            </div>
+            ))}
           </div>
         </div>
 
-        {/* Contact for Pricing */}
-        <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">
-            Masz pytania dotyczące leczenia?
-          </h3>
-          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Potrzeby każdego pacjenta są unikalne. Skontaktuj się ze mną, aby omówić 
-            Twój stan zdrowia i dostosować plan leczenia do Twoich potrzeb.
+        <div className='rounded-[2.75rem] border border-emerald-300/25 bg-[#05263c]/80 p-10 text-center text-slate-200 shadow-[0_45px_95px_-48px_rgba(20,184,166,0.65)] backdrop-blur'>
+          <h3 className='text-2xl font-semibold text-slate-100'>Masz pytania dotyczące terapii?</h3>
+          <p className='mx-auto mt-4 max-w-2xl text-sm text-slate-400'>
+            Skontaktuj się z nami, opowiedz o swoich celach ruchowych, a my dobierzemy plan terapii i ustalimy
+            dostępność terminów.
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="tel:506439462"
-              className="btn-primary flex items-center gap-2 justify-center"
-            >
-              <Phone className="w-5 h-5" />
+
+          <div className='mt-8 flex flex-col justify-center gap-4 text-sm font-semibold uppercase tracking-[0.35em] sm:flex-row'>
+            <a href='tel:506439462' className='btn-primary flex items-center justify-center gap-2'>
+              <Phone className='h-4 w-4' />
               Zadzwoń
             </a>
-            <a 
-              href="mailto:pt.wielemborek@gmail.com"
-              className="btn-secondary flex items-center gap-2 justify-center"
-            >
-              <Mail className="w-5 h-5" />
-              Napisz e-mail
+            <a href='mailto:pt.wielemborek@gmail.com' className='btn-secondary flex items-center justify-center gap-2'>
+              <Mail className='h-4 w-4' />
+              Napisz
             </a>
-            <button className="btn-secondary flex items-center gap-2 justify-center">
-              <Calendar className="w-5 h-5" />
-              Umów konsultację
+            <button className='btn-secondary flex items-center justify-center gap-2'>
+              <Calendar className='h-4 w-4' />
+              Zarezerwuj
             </button>
           </div>
-        </div>
 
-        {/* Disclaimer */}
-        <div className="mt-8 text-center">
-          <p className="text-sm text-gray-500">
-            * Ceny mogą się różnić w zależności od indywidualnych potrzeb leczenia. 
-            Skontaktuj się ze mną, aby uzyskać dokładne informacje o kosztach terapii.
+          <p className='mt-6 text-xs text-slate-600'>
+            * Ostateczny plan i kosztorys terapii potwierdzimy po diagnostyce.
           </p>
         </div>
       </div>
