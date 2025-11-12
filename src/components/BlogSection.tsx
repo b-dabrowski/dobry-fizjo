@@ -1,69 +1,22 @@
 'use client'
 
+import Link from 'next/link'
 import { useState } from 'react'
 import { ArrowRight, Clock, Play, Search, User } from 'lucide-react'
 
-const blogPosts = [
-  {
-    id: 1,
-    title: '5 kluczowych ćwiczeń na ból dolnych pleców',
-    excerpt:
-      'Zestaw dynamicznych ćwiczeń stabilizujących, które wykonasz w domu, aby odciążyć kręgosłup i uruchomić biodra.',
-    author: 'Przemysław Wielemborek',
-    date: '2024-01-15',
-    readTime: '5 min',
-    image:
-      'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-    category: 'Ćwiczenia',
-    videoId: 'dQw4w9WgXcQ',
-  },
-  {
-    id: 2,
-    title: 'Rehabilitacja po operacji – czego się spodziewać?',
-    excerpt:
-      'Jak wygląda protokół powrotu do ruchu po operacji ortopedycznej? Zobacz kamienie milowe i wskazówki regeneracyjne.',
-    author: 'Przemysław Wielemborek',
-    date: '2024-01-10',
-    readTime: '8 min',
-    image:
-      'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-    category: 'Rehabilitacja',
-    videoId: 'dQw4w9WgXcQ',
-  },
-  {
-    id: 3,
-    title: 'ABC zdrowego kręgosłupa',
-    excerpt:
-      'Codzienne nawyki, ergonomia i mobilizacje, które odciążą kręgosłup i zbudują nawyk świadomego ruchu.',
-    author: 'Przemysław Wielemborek',
-    date: '2024-01-05',
-    readTime: '10 min',
-    image:
-      'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-    category: 'Neurologia',
-    videoId: 'dQw4w9WgXcQ',
-  },
-  {
-    id: 4,
-    title: 'Korzyści z masażu terapeutycznego',
-    excerpt:
-      'Jak dobrać masaż wspierający rehabilitację? Poznaj techniki, które warto wpleść w plan regeneracji.',
-    author: 'Przemysław Wielemborek',
-    date: '2024-01-01',
-    readTime: '6 min',
-    image:
-      'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-    category: 'Masaż',
-    videoId: 'dQw4w9WgXcQ',
-  },
-]
+import { blogCategories, blogPosts } from '@/data/blogData'
 
-const categories = ['Wszystkie', 'Ćwiczenia', 'Rehabilitacja', 'Neurologia', 'Masaż', 'Profilaktyka']
+type BlogSectionProps = {
+  isFullPage?: boolean
+  showBackLink?: boolean
+}
 
-export default function BlogSection() {
+export default function BlogSection({ isFullPage = false, showBackLink = false }: BlogSectionProps) {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('Wszystkie')
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
+
+  const postsToDisplay = isFullPage ? blogPosts : blogPosts.slice(0, 2)
 
   const filteredPosts = blogPosts.filter((post) => {
     const matchesSearch =
@@ -72,6 +25,8 @@ export default function BlogSection() {
     const matchesCategory = selectedCategory === 'Wszystkie' || post.category === selectedCategory
     return matchesSearch && matchesCategory
   })
+
+  const visiblePosts = isFullPage ? filteredPosts : postsToDisplay
 
   return (
     <section
@@ -84,6 +39,17 @@ export default function BlogSection() {
       </div>
 
       <div className='container relative z-10 text-slate-200'>
+        {showBackLink && (
+          <div className='mb-10 flex justify-start'>
+            <Link
+              href='/#hero'
+              className='inline-flex items-center gap-3 rounded-full border border-emerald-300/40 bg-[#052235]/80 px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-emerald-100 transition hover:border-emerald-300/70 hover:text-amber-200'
+            >
+              ← Wróć na stronę główną
+            </Link>
+          </div>
+        )}
+
         <div className='mb-16 text-center'>
           <h2 className='mb-6 text-4xl font-bold md:text-5xl'>
             Porady zdrowotne i <span className='text-gradient'>materiały</span>
@@ -94,37 +60,39 @@ export default function BlogSection() {
           </p>
         </div>
 
-        <div className='mb-12'>
-          <div className='relative mx-auto mb-8 max-w-2xl'>
-            <Search className='absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500' />
-            <input
-              type='text'
-              placeholder='Szukaj artykułów i wideo...'
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
-              className='w-full rounded-2xl border border-emerald-300/25 bg-[#052235]/80 py-4 pl-12 pr-4 text-slate-200 shadow-[0_28px_65px_-38px_rgba(20,184,166,0.6)] transition focus:border-emerald-300/50 focus:outline-none focus:ring-2 focus:ring-emerald-300/40'
-            />
-          </div>
+        {isFullPage && (
+          <div className='mb-12'>
+            <div className='relative mx-auto mb-8 max-w-2xl'>
+              <Search className='absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500' />
+              <input
+                type='text'
+                placeholder='Szukaj artykułów i wideo...'
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
+                className='w-full rounded-2xl border border-emerald-300/25 bg-[#052235]/80 py-4 pl-12 pr-4 text-slate-200 shadow-[0_28px_65px_-38px_rgba(20,184,166,0.6)] transition focus:border-emerald-300/50 focus:outline-none focus:ring-2 focus:ring-emerald-300/40'
+              />
+            </div>
 
-          <div className='flex flex-wrap justify-center gap-4'>
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`rounded-full border px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] transition ${
-                  selectedCategory === category
-                    ? 'border-emerald-300/60 bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-400 text-slate-900 shadow-[0_22px_50px_-28px_rgba(20,184,166,0.75)]'
-                    : 'border-emerald-300/25 bg-[#05263c]/80 text-slate-300 hover:border-emerald-300/40 hover:text-emerald-100'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+            <div className='flex flex-wrap justify-center gap-4'>
+              {blogCategories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`rounded-full border px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] transition ${
+                    selectedCategory === category
+                      ? 'border-emerald-300/60 bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-400 text-slate-900 shadow-[0_22px_50px_-28px_rgba(20,184,166,0.75)]'
+                      : 'border-emerald-300/25 bg-[#05263c]/80 text-slate-300 hover:border-emerald-300/40 hover:text-emerald-100'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         <div className='grid grid-cols-1 gap-8 md:grid-cols-2'>
-          {filteredPosts.map((post) => (
+          {visiblePosts.map((post) => (
             <article
               key={post.id}
               className='group overflow-hidden rounded-[2.5rem] border border-emerald-300/25 bg-[#052235]/85 p-6 shadow-[0_35px_80px_-45px_rgba(20,184,166,0.65)] transition duration-300 hover:-translate-y-1 hover:border-emerald-300/50 hover:bg-[#062b42]/90'
@@ -170,15 +138,30 @@ export default function BlogSection() {
 
                 <div className='flex items-center justify-between border-t border-emerald-300/15 pt-4 text-xs uppercase tracking-[0.35em] text-slate-500'>
                   <span>{post.date}</span>
-                  <button className='flex items-center gap-2 text-emerald-200 transition group-hover:gap-3 group-hover:text-amber-200'>
+                  <Link
+                    href='/blog'
+                    className='flex items-center gap-2 text-emerald-200 transition group-hover:gap-3 group-hover:text-amber-200'
+                  >
                     Czytaj więcej
                     <ArrowRight className='h-4 w-4' />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </article>
           ))}
         </div>
+
+        {!isFullPage && (
+          <div className='mt-12 text-center'>
+            <Link
+              href='/blog'
+              className='inline-flex items-center gap-3 rounded-full border border-emerald-300/40 bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-400 px-10 py-4 text-sm font-semibold uppercase tracking-[0.35em] text-slate-900 shadow-[0_30px_70px_-40px_rgba(16,185,129,0.9)] transition hover:gap-4'
+            >
+              Zobacz więcej materiałów
+              <ArrowRight className='h-4 w-4' />
+            </Link>
+          </div>
+        )}
 
         {selectedVideo && (
           <div className='fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 p-4 backdrop-blur'>
