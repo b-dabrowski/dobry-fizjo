@@ -44,59 +44,67 @@ const benefits = [
 
 export default function WhyChooseUsSection() {
   return (
-    <section id="why-choose-us" className="section-padding bg-white">
-      <div className="container">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+    <section
+      id="why-choose-us"
+      className="section-padding relative overflow-hidden bg-[#041826]"
+    >
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(20,184,166,0.2),transparent_70%)] mix-blend-screen" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(249,115,22,0.15),transparent_70%)] mix-blend-screen" />
+        <div
+          className="absolute inset-0 opacity-[0.12]"
+          style={{
+            backgroundImage: 'linear-gradient(125deg, rgba(255,255,255,0.05) 0px, transparent 60px)',
+            backgroundSize: '120px 120px',
+          }}
+        />
+      </div>
+
+      <div className="container relative z-10 text-slate-200">
+        <div className="mb-16 text-center">
+          <h2 className="mb-6 text-4xl font-bold md:text-5xl">
             Dlaczego warto wybrać <span className="text-gradient">Dobry Fizjo</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Zapewniam wyjątkową opiekę rehabilitacyjną, która pomaga szybciej i skuteczniej osiągnąć cele powrotu do zdrowia.
+          <p className="mx-auto max-w-3xl text-xl text-slate-400">
+            Energetyczne protokoły terapii, które aktywują ruch, wzmacniają ciało i przywracają płynność w każdym
+            kroku.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {benefits.map((benefit, index) => (
-            <div 
+            <div
               key={index}
-              className="text-center group hover:transform hover:scale-105 transition-all duration-300"
+              className="group rounded-3xl border border-emerald-300/25 bg-[#052235]/85 p-8 text-center shadow-[0_32px_72px_-38px_rgba(20,184,166,0.65)] transition duration-300 hover:-translate-y-1 hover:border-emerald-200/50 hover:bg-[#062a41]/90 hover:shadow-[0_38px_82px_-36px_rgba(249,115,22,0.55)]"
             >
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary-200 transition-colors">
-                <benefit.icon className="w-8 h-8 text-primary-600" />
+              <div className="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center">
+                <div className="absolute inset-0 -rotate-6 rounded-[1.75rem] border border-emerald-300/20 bg-emerald-400/10 blur-sm transition group-hover:border-amber-300/30 group-hover:bg-amber-400/15" />
+                <div className="relative flex h-full w-full items-center justify-center rounded-[1.75rem] border border-emerald-300/40 bg-emerald-300/15 text-emerald-100 transition group-hover:border-amber-300/50 group-hover:bg-emerald-300/25 group-hover:text-amber-100">
+                  <benefit.icon className="h-7 w-7" />
+                </div>
               </div>
-              
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                {benefit.title}
-              </h3>
-              
-              <p className="text-gray-600 leading-relaxed">
-                {benefit.description}
-              </p>
+
+              <h3 className="mb-4 text-xl font-semibold text-slate-100">{benefit.title}</h3>
+              <p className="text-slate-400">{benefit.description}</p>
             </div>
           ))}
         </div>
 
-        {/* Statistics */}
-        <div className="mt-20 bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-8 md:p-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-primary-600 mb-2">98%</div>
-              <div className="text-gray-600">Satysfakcja pacjentów</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-primary-600 mb-2">15+</div>
-              <div className="text-gray-600">Lat doświadczenia</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-primary-600 mb-2">5000+</div>
-              <div className="text-gray-600">Skutecznych terapii</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-primary-600 mb-2">24/7</div>
-              <div className="text-gray-600">Wsparcie awaryjne</div>
-            </div>
+        <div className="mt-20 overflow-hidden rounded-[2.75rem] border border-emerald-300/25 bg-[#05263c]/85 p-8 md:p-12 shadow-[0_40px_90px_-45px_rgba(20,184,166,0.6)] backdrop-blur">
+          <div className="grid grid-cols-2 gap-10 text-center text-slate-200 md:grid-cols-4">
+            {[
+              { label: 'Satysfakcja pacjentów', value: '98%' },
+              { label: 'Lat doświadczenia', value: '15+' },
+              { label: 'Skutecznych terapii', value: '5000+' },
+              { label: 'Wsparcie awaryjne', value: '24/7' },
+            ].map((item) => (
+              <div key={item.label} className="space-y-3">
+                <div className="text-4xl font-bold text-emerald-200">{item.value}</div>
+                <div className="text-xs font-semibold uppercase tracking-[0.45em] text-slate-500">{item.label}</div>
+              </div>
+            ))}
           </div>
-        </div>        
+        </div>
       </div>
     </section>
   )
