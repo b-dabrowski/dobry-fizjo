@@ -1,10 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
-import { ArrowRight, Clock, Play, Search, User } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { ArrowRight, Clock, Eye, Play, Search, User } from 'lucide-react'
 
-import { blogCategories, blogPosts } from '@/data/blogData'
+import { categories, getChannelVideos, type Video } from '@/lib/youtube'
 
 type BlogSectionProps = {
   isFullPage?: boolean
@@ -12,21 +12,36 @@ type BlogSectionProps = {
 }
 
 export default function BlogSection({ isFullPage = false, showBackLink = false }: BlogSectionProps) {
+  const [videos, setVideos] = useState<Video[]>([])
   const [searchTerm, setSearchTerm] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('Wszystkie')
+  const [selectedCategory, setSelectedCategory] = useState('All')
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
-  const postsToDisplay = isFullPage ? blogPosts : blogPosts.slice(0, 2)
+  useEffect(() => {
+    let isMounted = true
 
-  const filteredPosts = blogPosts.filter((post) => {
-    const matchesSearch =
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = selectedCategory === 'Wszystkie' || post.category === selectedCategory
+    const fetchVideos = async () => {
+      const fetchedVideos = await getChannelVideos()
+      if (!isMounted) return
+      setVideos(fetchedVideos)
+      setIsLoading(false)
+    }
+
+    fetchVideos()
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  const filteredVideos = videos.filter((video) => {
+    const matchesSearch = video.title.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesCategory = selectedCategory === 'All' || video.category === selectedCategory
     return matchesSearch && matchesCategory
   })
 
-  const visiblePosts = isFullPage ? filteredPosts : postsToDisplay
+  const visibleVideos = isFullPage ? filteredVideos : filteredVideos.slice(0, 2)
 
   return (
     <section
@@ -66,7 +81,7 @@ export default function BlogSection({ isFullPage = false, showBackLink = false }
               <Search className='absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500' />
               <input
                 type='text'
-                placeholder='Szukaj artykułów i wideo...'
+                placeholder='Szukaj wideo...'
                 value={searchTerm}
                 onChange={(event) => setSearchTerm(event.target.value)}
                 className='w-full rounded-2xl border border-emerald-300/25 bg-[#052235]/80 py-4 pl-12 pr-4 text-slate-200 shadow-[0_28px_65px_-38px_rgba(20,184,166,0.6)] transition focus:border-emerald-300/50 focus:outline-none focus:ring-2 focus:ring-emerald-300/40'
@@ -74,7 +89,7 @@ export default function BlogSection({ isFullPage = false, showBackLink = false }
             </div>
 
             <div className='flex flex-wrap justify-center gap-4'>
-              {blogCategories.map((category) => (
+              {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
@@ -92,21 +107,21 @@ export default function BlogSection({ isFullPage = false, showBackLink = false }
         )}
 
         <div className='grid grid-cols-1 gap-8 md:grid-cols-2'>
-          {visiblePosts.map((post) => (
+          {visibleVideos.map((video) => (
             <article
-              key={post.id}
+              key={video.id}
               className='group overflow-hidden rounded-[2.5rem] border border-emerald-300/25 bg-[#052235]/85 p-6 shadow-[0_35px_80px_-45px_rgba(20,184,166,0.65)] transition duration-300 hover:-translate-y-1 hover:border-emerald-300/50 hover:bg-[#062b42]/90'
             >
               <div className='relative mb-6 overflow-hidden rounded-[2rem]'>
                 <img
-                  src={post.image}
-                  alt={post.title}
+                  src={video.thumbnail}
+                  alt={video.title}
                   className='h-48 w-full rounded-[inherit] object-cover transition duration-500 group-hover:scale-105'
                 />
 
                 <button
                   type='button'
-                  onClick={() => setSelectedVideo(post.videoId)}
+                  onClick={() => setSelectedVideo(video.id)}
                   className='absolute inset-0 flex items-center justify-center bg-[#041826]/60 opacity-0 transition duration-300 group-hover:opacity-100'
                 >
                   <div className='inline-flex h-16 w-16 items-center justify-center rounded-full border border-emerald-300/40 bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-400 text-slate-900 shadow-[0_24px_55px_-32px_rgba(20,184,166,0.8)]'>
@@ -115,40 +130,66 @@ export default function BlogSection({ isFullPage = false, showBackLink = false }
                 </button>
 
                 <span className='absolute left-4 top-4 rounded-full border border-emerald-300/40 bg-emerald-300/15 px-4 py-1 text-xs font-semibold uppercase tracking-[0.32em] text-emerald-100'>
-                  {post.category}
+                  {video.category}
                 </span>
+                {video.duration && (
+                  <span className='absolute bottom-4 right-4 rounded-full bg-slate-900/80 px-3 py-1 text-xs font-semibold text-emerald-100 backdrop-blur'>
+                    {video.duration}
+                  </span>
+                )}
               </div>
 
               <div className='space-y-4 text-slate-200'>
                 <h3 className='text-xl font-semibold text-slate-100 transition-colors group-hover:text-emerald-200'>
-                  {post.title}
+                  {video.title}
                 </h3>
-                <p className='text-sm leading-relaxed text-slate-400'>{post.excerpt}</p>
+                <p className='text-sm leading-relaxed text-slate-400'>
+                  Materiał wideo z kanału Dobry Fizjo. Kliknij, aby odtworzyć lub otworzyć na YouTube.
+                </p>
 
-                <div className='flex items-center gap-4 text-xs uppercase tracking-[0.35em] text-slate-500'>
+                <div className='flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.35em] text-slate-500'>
                   <span className='flex items-center gap-2'>
                     <User className='h-4 w-4 text-emerald-200' />
-                    {post.author}
+                    YouTube
                   </span>
-                  <span className='flex items-center gap-2'>
-                    <Clock className='h-4 w-4 text-emerald-200' />
-                    {post.readTime}
-                  </span>
+                  {video.duration !== 'Unknown' && (
+                    <span className='flex items-center gap-2'>
+                      <Clock className='h-4 w-4 text-emerald-200' />
+                      {video.duration}
+                    </span>
+                  )}
+                  {video.views !== 'Unknown' && (
+                    <span className='flex items-center gap-2'>
+                      <Eye className='h-4 w-4 text-emerald-200' />
+                      {video.views} wyświetleń
+                    </span>
+                  )}
                 </div>
 
                 <div className='flex items-center justify-between border-t border-emerald-300/15 pt-4 text-xs uppercase tracking-[0.35em] text-slate-500'>
-                  <span>{post.date}</span>
+                  <span>{video.date}</span>
                   <Link
-                    href='/blog'
+                    href={video.url}
+                    target='_blank'
                     className='flex items-center gap-2 text-emerald-200 transition group-hover:gap-3 group-hover:text-amber-200'
                   >
-                    Czytaj więcej
+                    Otwórz na YouTube
                     <ArrowRight className='h-4 w-4' />
                   </Link>
                 </div>
               </div>
             </article>
           ))}
+          {!isLoading && visibleVideos.length === 0 && (
+            <div className='col-span-1 rounded-3xl border border-emerald-300/20 bg-[#052235]/80 p-8 text-center text-slate-300 md:col-span-2'>
+              Brak wyników dla wybranych filtrów. Spróbuj innej kategorii lub frazy.
+            </div>
+          )}
+          {isLoading && visibleVideos.length === 0 && (
+            <div className='col-span-1 rounded-3xl border border-emerald-300/20 bg-[#052235]/80 p-8 text-center text-slate-300 md:col-span-2'>
+              Ładuję najnowsze wideo z kanału...
+            </div>
+          )}
         </div>
 
         {!isFullPage && (
