@@ -136,4 +136,4 @@ function pickCategory(title: string): string {
   return 'ogólne'
 }
 
-export const categories = ['wszystko', 'ćwiczenia', 'suplementy', 'ciekawostki', 'ogólne']
+export const categories = ['wszystko', 'ćwiczenia', 'suplementy', 'ciekawostki', 'ogólne', 'test']
