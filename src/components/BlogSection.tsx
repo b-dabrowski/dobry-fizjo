@@ -14,7 +14,7 @@ type BlogSectionProps = {
 export default function BlogSection({ isFullPage = false, showBackLink = false }: BlogSectionProps) {
   const [videos, setVideos] = useState<Video[]>([])
   const [searchTerm, setSearchTerm] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('All')
+  const [selectedCategory, setSelectedCategory] = useState('wszystko')
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -37,7 +37,7 @@ export default function BlogSection({ isFullPage = false, showBackLink = false }
 
   const filteredVideos = videos.filter((video) => {
     const matchesSearch = video.title.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = selectedCategory === 'All' || video.category === selectedCategory
+    const matchesCategory = selectedCategory === 'wszystko' || video.category === selectedCategory
     return matchesSearch && matchesCategory
   })
 

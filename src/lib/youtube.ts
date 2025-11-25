@@ -37,6 +37,13 @@ interface YouTubeVideoItem {
 const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY
 const UPLOADS_PLAYLIST_ID = process.env.NEXT_PUBLIC_YOUTUBE_UPLOADS_PLAYLIST_ID // Derived from Channel ID (UC -> UU)
 
+const categoryMatchers: { category: string; keywords: string[] }[] = [
+  { category: 'ćwiczenia', keywords: ['ćwiczenia', 'trening', 'exercise', 'workout', 'mobilizacja'] },
+  { category: 'suplementy', keywords: ['suplement', 'supplement'] },
+  { category: 'ciekawostki', keywords: ['ciekawostk', 'ciekawostka', 'ciekawostki', 'ciekawostkę', 'fakt', 'fact', 'wiesz'] },
+  { category: 'ogólne', keywords: [] },
+]
+
 export async function getChannelVideos(): Promise<Video[]> {
   if (!API_KEY || !UPLOADS_PLAYLIST_ID) {
     console.warn('YouTube API Key or playlist ID is missing. Set NEXT_PUBLIC_YOUTUBE_API_KEY and NEXT_PUBLIC_YOUTUBE_UPLOADS_PLAYLIST_ID.')
@@ -69,6 +76,7 @@ export async function getChannelVideos(): Promise<Video[]> {
     return data.items.map((item: YouTubePlaylistItem) => {
       const videoId = item.snippet.resourceId.videoId
       const stats = statsMap.get(videoId)
+      const category = pickCategory(item.snippet.title)
 
       return {
         id: videoId,
@@ -78,7 +86,7 @@ export async function getChannelVideos(): Promise<Video[]> {
           item.snippet.thumbnails.high?.url ||
           item.snippet.thumbnails.medium?.url ||
           '',
-        category: 'General', // Default category as API doesn't provide it easily in this view
+        category,
         url: `https://www.youtube.com/watch?v=${videoId}`,
         date: new Date(item.snippet.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
         duration: stats ? parseDuration(stats.contentDetails.duration) : 'Unknown',
@@ -118,4 +126,14 @@ function formatViews(views: string): string {
   return views
 }
 
-export const categories = ['All', 'Exercises', 'Education', 'Nutrition', 'General']
+function pickCategory(title: string): string {
+  const lowerTitle = title.toLowerCase()
+  for (const matcher of categoryMatchers) {
+    if (matcher.keywords.some((keyword) => lowerTitle.includes(keyword))) {
+      return matcher.category
+    }
+  }
+  return 'ogólne'
+}
+
+export const categories = ['wszystko', 'ćwiczenia', 'suplementy', 'ciekawostki', 'ogólne']
