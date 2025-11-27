@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
-import { ArrowRight, Check, Phone, Play, X } from 'lucide-react'
+import { ArrowRight, Check, Phone } from 'lucide-react'
 
 const checklist = [
   'Spersonalizowany plan terapii oparty na Twoich celach ruchowych',
@@ -19,9 +18,6 @@ const therapyStages = [
 ]
 
 export default function HeroSection() {
-  const [isVideoOpen, setIsVideoOpen] = useState(false)
-  const [isFormOpen, setIsFormOpen] = useState(false)
-
   return (
     <section className="relative overflow-hidden bg-[#041826] text-white">
       <div className="pointer-events-none absolute inset-0">
@@ -64,14 +60,6 @@ export default function HeroSection() {
             </ul>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <button
-                onClick={() => setIsFormOpen(true)}
-                className="group inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-lg font-semibold text-slate-900 shadow-[0_22px_45px_-24px_rgba(15,118,110,0.95)] transition hover:-translate-y-[2px] hover:shadow-[0_30px_60px_-24px_rgba(15,118,110,0.95)]"
-              >
-                Rozpocznij diagnostykę online
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1.5" />
-              </button>
-
               <a
                 href="tel:506439462"
                 className="inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-6 py-4 text-lg font-semibold text-white/80 transition hover:border-white/50 hover:text-white"
@@ -103,14 +91,6 @@ export default function HeroSection() {
                 priority
                 className="h-full w-full object-cover"
               />
-              <button
-                onClick={() => setIsVideoOpen(true)}
-                className="group absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-slate-900 transition hover:scale-105"
-                aria-label="Odtwórz wideo wprowadzające"
-              >
-                <span className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-300 via-cyan-300 to-orange-300 opacity-60 blur-xl transition group-hover:opacity-80" />
-                <Play className="relative z-10 h-9 w-9 fill-slate-900" />
-              </button>
             </div>
           </div>
         </div>
@@ -125,16 +105,13 @@ export default function HeroSection() {
               {therapyStages.map((stage, index) => (
                 <div
                   key={stage.title}
-                  className="group relative flex min-w-[220px] flex-col gap-3 rounded-3xl border border-white/12 bg-white/10 px-6 py-6 backdrop-blur-lg transition hover:border-white/30 hover:bg-white/16"
+                  className="group flex min-w-[220px] flex-col gap-3 rounded-3xl border border-white/12 bg-white/10 px-6 py-6 backdrop-blur-lg transition hover:border-white/30 hover:bg-white/16"
                 >
                   <span className="text-xs font-semibold uppercase tracking-[0.3em] text-white/50">
                     Krok {index + 1}
                   </span>
                   <span className="text-lg font-semibold text-white">{stage.title}</span>
                   <p className="text-sm leading-relaxed text-white/70">{stage.description}</p>
-                  <span className="absolute -top-3 left-6 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/15 text-xs font-semibold text-white/70 shadow-[0_8px_20px_-10px_rgba(255,255,255,0.55)]">
-                    {index + 1}
-                  </span>
                 </div>
               ))}
             </div>
@@ -148,95 +125,6 @@ export default function HeroSection() {
           <ArrowRight className="h-4 w-4 rotate-90 text-white/70" />
         </div>
       </div>
-
-      {isVideoOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6 backdrop-blur">
-          <div className="relative w-full max-w-3xl overflow-hidden rounded-3xl border border-white/10 bg-slate-950/80 shadow-2xl">
-            <button
-              onClick={() => setIsVideoOpen(false)}
-              className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition hover:bg-white/20"
-              aria-label="Zamknij wideo"
-            >
-              <X className="h-5 w-5" />
-            </button>
-            <div className="aspect-video w-full bg-slate-900/60">
-              <iframe
-                src="https://www.youtube.com/embed/k3Vfj-e1Ma4"
-                title="Dobry Fizjo - wprowadzenie"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="h-full w-full"
-              />
-            </div>
-          </div>
-        </div>
-      )}
-
-      {isFormOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-6 backdrop-blur">
-          <div className="relative w-full max-w-xl space-y-6 overflow-hidden rounded-3xl border border-white/10 bg-white/95 p-8 text-slate-900 shadow-2xl">
-            <button
-              onClick={() => setIsFormOpen(false)}
-              className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-slate-600 transition hover:bg-slate-200"
-              aria-label="Zamknij formularz"
-            >
-              <X className="h-5 w-5" />
-            </button>
-            <div className="space-y-3">
-              <h2 className="text-2xl font-semibold text-slate-900">Rozpocznij diagnostykę online</h2>
-              <p className="text-sm text-slate-600">
-                Wypełnij formularz, a odezwiemy się, aby umówić Twoją 15-minutową konsultację diagnostyczną.
-              </p>
-            </div>
-            <form className="space-y-4">
-              <div className="flex flex-col gap-2">
-                <label htmlFor="name" className="text-sm font-medium text-slate-700">
-                  Imię i nazwisko
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Podaj swoje imię"
-                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-800 shadow-sm outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="text-sm font-medium text-slate-700">
-                  Adres e-mail
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="name@example.com"
-                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-800 shadow-sm outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="goal" className="text-sm font-medium text-slate-700">
-                  Cel terapii
-                </label>
-                <textarea
-                  id="goal"
-                  name="goal"
-                  rows={4}
-                  placeholder="Opisz krótko, jaki ruch lub sport chcesz odzyskać."
-                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-800 shadow-sm outline-none transition focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
-                />
-              </div>
-              <button
-                type="button"
-                onClick={() => setIsFormOpen(false)}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-400 via-cyan-400 to-orange-400 px-6 py-3 text-sm font-semibold text-slate-900 shadow-[0_20px_45px_-25px_rgba(6,182,212,0.85)] transition hover:shadow-[0_28px_55px_-20px_rgba(6,182,212,0.9)]"
-              >
-                Wyślij zgłoszenie
-                <ArrowRight className="h-4 w-4" />
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
     </section>
   )
 }

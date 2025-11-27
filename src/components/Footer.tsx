@@ -42,7 +42,7 @@ export default function Footer() {
       </div>
 
       <div className='container relative z-10 grid gap-12 py-16 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)_minmax(0,1fr)]'>
-        <div className='space-y-6'>
+        <div className='space-y-6 py-8'>
           <h3 className='text-3xl font-semibold text-slate-100'>Dobry Fizjo</h3>
           <p className='max-w-md text-slate-400'>
             Energetyczne podejście do terapii, które łączy diagnostykę funkcjonalną, manualną precyzję i trening
@@ -68,7 +68,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div>
+        <div className='py-8'>
           <h4 className='text-xs font-semibold uppercase tracking-[0.4em] text-slate-500'>Nawigacja</h4>
           <nav className='mt-6 grid gap-3 text-sm text-slate-300'>
             {quickLinks.map((link) => (
@@ -79,7 +79,7 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div>
+        <div className='py-8'>
           <h4 className='text-xs font-semibold uppercase tracking-[0.4em] text-slate-500'>Bądźmy w kontakcie</h4>
           <p className='mt-6 text-sm text-slate-400'>
             Dołącz do społeczności skupionej wokół świadomego ruchu. Najnowsze treści, warsztaty i wskazówki – prosto do

@@ -75,7 +75,7 @@ export default function ServicesSection() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group rounded-3xl border border-emerald-300/30 bg-[#052235]/80 p-8 shadow-[0_32px_65px_-38px_rgba(20,184,166,0.65)] transition duration-300 hover:-translate-y-1 hover:border-emerald-300/60 hover:bg-[#062b42]/90 hover:shadow-[0_40px_80px_-35px_rgba(249,115,22,0.55)]"
+              className="group flex h-full flex-col rounded-3xl border border-emerald-300/30 bg-[#052235]/80 p-8 shadow-[0_32px_65px_-38px_rgba(20,184,166,0.65)] transition duration-300 hover:-translate-y-1 hover:border-emerald-300/60 hover:bg-[#062b42]/90 hover:shadow-[0_40px_80px_-35px_rgba(249,115,22,0.55)]"
             >
               <div className="mb-5 flex items-center">
                 <div className="flex h-12 w-12 flex-none items-center justify-center rounded-2xl border border-emerald-300/30 bg-emerald-300/15 text-emerald-200 transition group-hover:border-emerald-200 group-hover:bg-emerald-300/20 group-hover:text-emerald-100">
@@ -86,7 +86,7 @@ export default function ServicesSection() {
 
               <p className="mb-6 leading-relaxed text-slate-400">{service.description}</p>
 
-              <button className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.32em] text-emerald-200 transition-all group-hover:gap-3 group-hover:text-amber-200">
+              <button className="mt-auto flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.32em] text-emerald-200 transition-all group-hover:gap-3 group-hover:text-amber-200">
                 Dowiedz się więcej
                 <ArrowRight className="h-3.5 w-3.5" />
               </button>
