@@ -23,12 +23,12 @@ const services = [
   {
     icon: Activity,
     title: 'Trening medyczny',
-    description: 'Indywidualnie dobrany plan ćwiczeń, który zmniejsza ból, wzmacnia mięśnie i stawy, pomaga zapobiegać kontuzjom oraz poprawia kondycję i samopoczucie.'
+    description: 'Indywidualnie dobrany plan ćwiczeń, który wzmacnia mięśnie i stawy, pomaga zapobiegać kontuzjom oraz poprawia kondycję i samopoczucie.'
   },
   {
     icon: Heart,
     title: 'Terapia ruchem',
-    description: 'Ruch to najlepsze lekarstwo – zastąpi wiele tabletek i pozwala cieszyć się zdrowym ciałem w każdym wieku. Profesjonalne programy ćwiczeń dostosowane do Twoich potrzeb.'
+    description: 'Ruch to najlepsze lekarstwo - pozwala cieszyć się zdrowym ciałem w każdym wieku. Profesjonalne programy ćwiczeń dostosowane do Twoich potrzeb.'
   },
   {
     icon: Zap,
@@ -38,7 +38,7 @@ const services = [
   {
     icon: Brain,
     title: 'Łagodzenie bólu',
-    description: 'Skuteczne metody leczenia bólu ostrego i przewlekłego, w tym bólu kręgosłupa, kończyn, głowy oraz bólu neuropatycznego. Kompleksowe podejście do zarządzania bólem.'
+    description: 'Uznane metody leczenia bólu ostrego i przewlekłego, w tym bólu kręgosłupa, kończyn, głowy oraz bólu neuropatycznego. Kompleksowe podejście do zarządzania bólem.'
   }
 ]
 

@@ -6,11 +6,11 @@ const pricingPlans = [
   {
     name: 'Diagnoza startowa',
     price: '220 zł',
-    duration: '60 minut',
+    duration: '45 minut',
     description: 'Kompleksowa ocena funkcjonalna i mapa priorytetów terapeutycznych.',
     features: [
       'Analiza ruchu i testy funkcjonalne',
-      'Plan kinetycznej terapii krok po kroku',
+      'Plan terapii krok po kroku',
       'Program ćwiczeń do domu',
       'Rekomendacje sprzętowe i regeneracyjne',
     ],
@@ -19,7 +19,7 @@ const pricingPlans = [
   {
     name: 'Sesja terapeutyczna',
     price: '220 zł',
-    duration: '45-60 minut',
+    duration: '45 minut',
     description: 'Połączenie terapii manualnej, neuromobilizacji i treningu medycznego.',
     features: [
       'Indywidualny protokół zabiegowy',
@@ -57,8 +57,7 @@ export default function PricingSection() {
             Przejrzysty <span className='text-gradient'>Cennik</span>
           </h2>
           <p className='mx-auto max-w-3xl text-xl text-slate-400'>
-            Wysoka intensywność pracy, nowoczesna diagnostyka i indywidualny plan kinezyterapii w uczciwych, prostych
-            pakietach cenowych.
+            Bez kosztów dodatkowych niezależnie od wykorzystanych metod i urządzeń.
           </p>
         </div>
 

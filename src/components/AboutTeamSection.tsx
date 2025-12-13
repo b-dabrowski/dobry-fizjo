@@ -14,11 +14,11 @@ const teamMembers = [
     email: 'pt.wielemborek@gmail.com',
     phone: '506 439 462',
     courses: [
-      'Terapia manualna według koncepcji Maitland (poziomy 1, 2a i 2b)',
+      'Terapia manualna według koncepcji Maitland (poziomy 1, 2a i 2b i 3)',
       'Practical Program Design Mastery – programowanie treningu',
-      'IASTM – terapia narzędziowa',
+      'Neurodynamika Kliniczna',
       'Kinesiotaping',
-      'Postępowanie fizjoterapeutyczne w terapii blizn',
+      'Kettlebells for health - tening kettlebell w fizjoterapii',
       'Flossing & Cupping',
       'Masaż tkanek głębokich'
     ]

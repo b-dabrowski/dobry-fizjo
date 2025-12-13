@@ -12,8 +12,8 @@ import {
 const benefits = [
   {
     icon: Users,
-    title: 'Doświadczony zespół',
-    description: 'Certyfikowani terapeuci z ponad 15-letnim doświadczeniem w rehabilitacji.'
+    title: 'Doświadczenie',
+    description: 'Fizjoterapeuta z wieloletnim stażem indywidualnej pracy z pacjentem.'
   },
   {
     icon: Target,
@@ -28,7 +28,7 @@ const benefits = [
   {
     icon: Award,
     title: 'Certyfikowana jakość',
-    description: 'Certyfikowany gabinet i sprawdzone metody terapii.'
+    description: 'Ukończone szkolenia między innymi metody Maitlanda oraz Neurodynamic Solutions.'
   },
   {
     icon: Shield,
@@ -38,7 +38,7 @@ const benefits = [
   {
     icon: Clock,
     title: 'Elastyczne godziny',
-    description: 'Dogodne terminy wizyt, także wieczorami i w weekendy.'
+    description: 'Wygodne umawianie wizyt przez telefon i internetowo.'
   }
 ]
 
@@ -66,8 +66,7 @@ export default function WhyChooseUsSection() {
             Dlaczego warto wybrać <span className="text-gradient">Dobry Fizjo</span>
           </h2>
           <p className="mx-auto max-w-3xl text-xl text-slate-400">
-            Energetyczne protokoły terapii, które aktywują ruch, wzmacniają ciało i przywracają płynność w każdym
-            kroku.
+            Terapia oparta na doświadczeniu, wiedzy i certyfikowanych metodach.
           </p>
         </div>
 

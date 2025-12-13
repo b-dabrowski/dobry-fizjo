@@ -5,12 +5,12 @@ import { ArrowRight, Check, Phone } from 'lucide-react'
 
 const checklist = [
   'Spersonalizowany plan terapii oparty na Twoich celach ruchowych',
-  'Zaawansowana diagnostyka funkcjonalna i analizatory ruchu',
-  'Stałe wsparcie zespołu – od pierwszej konsultacji po ostatni trening',
+  'Zaawansowana diagnostyka funkcjonalna i badanie USG w cenie',
+  'Stałe wsparcie – od pierwszej konsultacji po ostatni trening',
 ]
 
 const therapyStages = [
-  { title: 'Diagnoza 360°', description: 'Analiza postawy, testy funkcjonalne, feedback video.' },
+  { title: 'Diagnoza 360°', description: 'Analiza postawy, testy funkcjonalne, rehabilitacyjne obrazowanie ultrasonograficzne' },
   { title: 'Projekt ruchu', description: 'Plan terapii i treningów korygujących dostosowany do kalendarza.' },
   { title: 'Terapia aktywna', description: 'Sesje manualne, trening medyczny i mobilizacje stawowe.' },
   { title: 'Regeneracja smart', description: 'Odnowa biologiczna, oddech, prehab i monitoring obciążeń.' },

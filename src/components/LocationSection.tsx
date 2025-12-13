@@ -105,15 +105,15 @@ export default function LocationSection() {
                   <h3 className='text-lg font-semibold text-slate-100'>Godziny pracy</h3>
                   <div className='mt-4 space-y-2 text-slate-400'>
                     <div className='flex justify-between'>
-                      <span>Poniedziałek – Piątek</span>
-                      <span className='font-semibold text-slate-100'>7:00 – 19:00</span>
+                      <span>Poniedziałek, Piątek</span>
+                      <span className='font-semibold text-slate-100'>8:45 - 16:15</span>
                     </div>
                     <div className='flex justify-between'>
-                      <span>Sobota</span>
-                      <span className='font-semibold text-slate-100'>8:00 – 16:00</span>
+                      <span>Wtorek, Środa, Czwartek</span>
+                      <span className='font-semibold text-slate-100'>8:45 - 16:15</span>
                     </div>
                     <div className='flex justify-between'>
-                      <span>Niedziela</span>
+                      <span>Weekend</span>
                       <span className='font-semibold text-slate-100'>Nieczynne</span>
                     </div>
                   </div>

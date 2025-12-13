@@ -154,7 +154,7 @@ export default function GallerySection() {
         <div className="mt-16 grid grid-cols-1 gap-6 rounded-[2.75rem] border border-emerald-300/25 bg-[#05263c]/85 p-10 text-slate-200 shadow-[0_45px_95px_-45px_rgba(20,184,166,0.6)] backdrop-blur md:grid-cols-4">
           {[
             { icon: '🏥', title: 'Nowoczesny sprzęt', description: 'Zaawansowane systemy diagnostyki i rehabilitacji.' },
-            { icon: '🧬', title: 'Biomechanika', description: 'Analiza ruchu z użyciem czujników i kamer HD.' },
+            { icon: '🧬', title: 'Biomechanika', description: 'Analiza biegu.' },
             { icon: '🧘', title: 'Strefa treningu', description: 'Dedykowane miejsce do pracy nad mobilnością i siłą.' },
             { icon: '☕', title: 'Strefa regeneracji', description: 'Przestrzeń relaksu po intensywnej terapii.' },
           ].map((feature) => (

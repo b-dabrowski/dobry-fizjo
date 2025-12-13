@@ -25,7 +25,7 @@ const socialLinks = [
 const quickLinks = [
   { label: 'Usługi', href: '#services' },
   { label: 'Proces terapii', href: '#why-choose-us' },
-  { label: 'Zespół', href: '#about-team' },
+  { label: 'O mnie', href: '#about-team' },
   { label: 'Cennik', href: '#pricing' },
   { label: 'Blog', href: '#blog' },
   { label: 'Kontakt', href: '#location' },
@@ -61,9 +61,12 @@ export default function Footer() {
               <MapPin className='h-4 w-4 text-emerald-200' />
               ul. Wiadukt 5 lok.h2, 15-327 Białystok
             </span>
-            <span className='flex items-center gap-3 text-slate-400'>
+            <span className='flex items-start gap-3 text-slate-400'>
               <Clock className='h-4 w-4 text-emerald-200' />
-              Pon-Pt 7:00-19:00 · Sobota 8:00-16:00
+              <span className='flex flex-col leading-tight'>
+                <span>Poniedziałek, Piątek 8:45 - 16:15</span>
+                <span>Wtorek, Środa, Czwartek 10:30 - 18:00</span>
+              </span>
             </span>
           </div>
         </div>
