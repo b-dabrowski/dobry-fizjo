@@ -112,7 +112,7 @@ export default function TestimonialsSection() {
             </p>
 
             <div className="grid grid-cols-2 gap-6 text-xs uppercase tracking-[0.4em] text-slate-500 md:grid-cols-4">
-              {['Poleciłoby znajomym', 'Powrót do ruchu', 'Profesjonalna obsługa', 'Higiena i komfort'].map((item) => (
+              {['Poleciłoby znajomym', 'Profesjonalna obsługa', 'Higiena i komfort'].map((item) => (
                 <div key={item}>
                   <div className="text-lg font-semibold text-emerald-200">100%</div>
                   <div>{item}</div>
@@ -122,11 +122,7 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <h3 className="mb-4 text-2xl font-semibold text-slate-100">Gotowy, aby ruszyć z energią?</h3>
-          <p className="mb-6 text-slate-400">
-            Dołącz do pacjentów, którzy na nowo odkryli swobodę ruchu i pewność własnego ciała.
-          </p>
+        <div className="mt-12 text-center">          
           <a
             href="https://www.znanylekarz.pl/przemyslaw-wielemborek/fizjoterapeuta/bialystok"
             target="_blank"
@@ -134,7 +130,7 @@ export default function TestimonialsSection() {
             className="btn-primary inline-block"
           >
             Umów konsultację już dziś
-          </a>
+          </a>          
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 'use client'
 
-import Image from 'next/image'
 import { ArrowRight, Check, Phone } from 'lucide-react'
+import { useEffect } from 'react'
 
 const checklist = [
   'Spersonalizowany plan terapii oparty na Twoich celach ruchowych',
@@ -18,6 +18,22 @@ const therapyStages = [
 ]
 
 export default function HeroSection() {
+  useEffect(() => {
+    const scriptId = 'zl-widget-s'
+    if (document.getElementById(scriptId)) return
+
+    const script = document.createElement('script')
+    script.id = scriptId
+    script.src = '//platform.docplanner.com/js/widget.js'
+
+    const firstScript = document.getElementsByTagName('script')[0]
+    if (firstScript?.parentNode) {
+      firstScript.parentNode.insertBefore(script, firstScript)
+    } else {
+      document.body.appendChild(script)
+    }
+  }, [])
+
   return (
     <section className="relative overflow-hidden bg-[#041826] text-white">
       <div className="pointer-events-none absolute inset-0">
@@ -57,19 +73,7 @@ export default function HeroSection() {
                   <span className="leading-relaxed">{item}</span>
                 </li>
               ))}
-            </ul>
-
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <a
-                href="tel:506439462"
-                className="inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-6 py-4 text-lg font-semibold text-white/80 transition hover:border-white/50 hover:text-white"
-              >
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10">
-                  <Phone className="h-5 w-5" />
-                </span>
-                Porozmawiaj z nami
-              </a>
-            </div>
+            </ul>            
           </div>
 
           <div className="relative mx-auto w-full max-w-lg">
@@ -82,15 +86,23 @@ export default function HeroSection() {
             </div>
             <div className="absolute left-1/2 top-1/2 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 animate-[spin_18s_linear_infinite_reverse] opacity-40" />
 
-            <div className="relative overflow-hidden rounded-[3rem] border border-white/15 bg-white/10 shadow-[0_45px_75px_-35px_rgba(14,116,144,0.65)] backdrop-blur-xl">
-              <Image
-                src="/images/team/przemek-hero-transparent.png"
-                alt="Przemek – fizjoterapeuta prezentujący dynamiczny ruch"
-                width={800}
-                height={1000}
-                priority
-                className="h-full w-full object-cover"
-              />
+            <div className="relative overflow-hidden rounded-[3rem] border border-white/15 bg-white/10 p-6 shadow-[0_45px_75px_-35px_rgba(14,116,144,0.65)] backdrop-blur-xl">
+              <div className="rounded-2xl bg-[#041826]/60 p-4 text-center text-white/90">
+                <a
+                  id="zl-url"
+                  className="zl-url"
+                  href="https://www.znanylekarz.pl/przemyslaw-wielemborek/fizjoterapeuta/bialystok"
+                  rel="nofollow"
+                  data-zlw-doctor="przemyslaw-wielemborek"
+                  data-zlw-type="big_with_calendar"
+                  data-zlw-opinion="false"
+                  data-zlw-hide-branding="true"
+                  data-zlw-saas-only="true"
+                  data-zlw-a11y-title="Widget umówienia wizyty lekarskiej"
+                >
+                  Przemysław Wielemborek - ZnanyLekarz.pl
+                </a>
+              </div>
             </div>
           </div>
         </div>

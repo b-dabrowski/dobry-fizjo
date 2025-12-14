@@ -5,7 +5,6 @@ import {
   Target, 
   Stethoscope, 
   Award, 
-  Shield,
   Clock
 } from 'lucide-react'
 
@@ -29,11 +28,6 @@ const benefits = [
     icon: Award,
     title: 'Certyfikowana jakość',
     description: 'Ukończone szkolenia między innymi metody Maitlanda oraz Neurodynamic Solutions.'
-  },
-  {
-    icon: Shield,
-    title: 'Akceptujemy ubezpieczenia',
-    description: 'Współpracujemy z większością ubezpieczycieli, by zapewnić dostępność usług.'
   },
   {
     icon: Clock,
@@ -89,21 +83,6 @@ export default function WhyChooseUsSection() {
           ))}
         </div>
 
-        <div className="mt-20 overflow-hidden rounded-[2.75rem] border border-emerald-300/25 bg-[#05263c]/85 p-8 md:p-12 shadow-[0_40px_90px_-45px_rgba(20,184,166,0.6)] backdrop-blur">
-          <div className="grid grid-cols-2 gap-10 text-center text-slate-200 md:grid-cols-4">
-            {[
-              { label: 'Satysfakcja pacjentów', value: '98%' },
-              { label: 'Lat doświadczenia', value: '15+' },
-              { label: 'Skutecznych terapii', value: '5000+' },
-              { label: 'Wsparcie awaryjne', value: '24/7' },
-            ].map((item) => (
-              <div key={item.label} className="space-y-3">
-                <div className="text-4xl font-bold text-emerald-200">{item.value}</div>
-                <div className="text-xs font-semibold uppercase tracking-[0.45em] text-slate-500">{item.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   )

@@ -7,8 +7,7 @@ const teamMembers = [
     name: 'Przemysław Wielemborek',
     title: 'Fizjoterapeuta i Rehabilitant',
     specialties: ['Terapia Manualna Maitland', 'Trening Medyczny', 'IASTM', 'Kinesiotaping', 'Neuromobilizacja'],
-    qualifications: 'Absolwent Uniwersytetu Medycznego w Białymstoku, Doktorant',
-    // experience: 'Kilka lat doświadczenia',
+    qualifications: 'Absolwent Uniwersytetu Medycznego w Białymstoku, Doktorant',    
     image: '/images/team/przemek.jpg',
     bio: 'Od lat pomagam pacjentom w odzyskaniu sprawności, redukcji bólu i powrocie do aktywności. Stale podnoszę swoje kwalifikacje, uczestnicząc w kursach i szkoleniach z zakresu terapii manualnej, rehabilitacji i treningu medycznego.',
     email: 'pt.wielemborek@gmail.com',
@@ -49,8 +48,7 @@ export default function AboutTeamSection() {
             O <span className="text-gradient">Mnie</span>
           </h2>
           <p className="mx-auto max-w-3xl text-xl text-slate-400">
-            Jestem fizjoterapeutą, który łączy analityczną diagnostykę z kinetycznym podejściem do ruchu. Każda sesja to
-            energia, precyzja i realny progres.
+            Jestem fizjoterapeutą, który łączy analityczną diagnostykę z kinetycznym podejściem do ruchu.
           </p>
         </div>
 
@@ -139,7 +137,7 @@ export default function AboutTeamSection() {
             { label: 'Ukończonych Kursów', value: '7+' },
             { label: 'Manual Mastery', value: 'Maitland' },
             { label: 'Indywidualne Podejście', value: '100%' },
-            { label: 'Wsparcie', value: '24/7' },
+            // { label: 'Wsparcie', value: '24/7' },
           ].map((stat) => (
             <div key={stat.label} className="space-y-3">
               <div className="text-3xl font-semibold text-emerald-200">{stat.value}</div>

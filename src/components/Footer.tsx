@@ -4,22 +4,16 @@ import {
   ArrowUp,
   Clock,
   Facebook,
-  Heart,
-  Instagram,
-  Linkedin,
+  Heart,  
   Mail,
   MapPin,
-  Phone,
-  Twitter,
+  Phone,  
   Youtube,
 } from 'lucide-react'
 
 const socialLinks = [
-  { label: 'Facebook', href: 'https://facebook.com/', icon: Facebook },
-  { label: 'Instagram', href: 'https://instagram.com/', icon: Instagram },
-  { label: 'LinkedIn', href: 'https://linkedin.com/', icon: Linkedin },
-  { label: 'YouTube', href: 'https://youtube.com/', icon: Youtube },
-  { label: 'Twitter', href: 'https://twitter.com/', icon: Twitter },
+  { label: 'Facebook', href: 'https://www.facebook.com/primo.wi', icon: Facebook },    
+  { label: 'YouTube', href: 'https://www.youtube.com/@DobryFizjoPrzemyslaw', icon: Youtube },  
 ]
 
 const quickLinks = [

@@ -155,8 +155,7 @@ export default function GallerySection() {
           {[
             { icon: '🏥', title: 'Nowoczesny sprzęt', description: 'Zaawansowane systemy diagnostyki i rehabilitacji.' },
             { icon: '🧬', title: 'Biomechanika', description: 'Analiza biegu.' },
-            { icon: '🧘', title: 'Strefa treningu', description: 'Dedykowane miejsce do pracy nad mobilnością i siłą.' },
-            { icon: '☕', title: 'Strefa regeneracji', description: 'Przestrzeń relaksu po intensywnej terapii.' },
+            { icon: '🧘', title: 'Strefa treningu', description: 'Dedykowane miejsce do pracy nad mobilnością i siłą.' },           
           ].map((feature) => (
             <div key={feature.title} className="rounded-3xl border border-emerald-300/25 bg-[#041f31]/85 p-6 text-center shadow-[0_28px_70px_-42px_rgba(249,115,22,0.55)]">
               <div className="text-3xl">{feature.icon}</div>
