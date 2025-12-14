@@ -5,13 +5,13 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 const galleryImages = [
   { src: '/images/gallery/df-placowka-001.jpg', alt: 'Fasada kliniki', category: 'Placówka' },
-  { src: '/images/gallery/df-gabinet-001.jpg', alt: 'Recepcja i strefa relaksu', category: 'Gabinet' },
+  { src: '/images/gallery/df-gabinet-001.jpg', alt: 'Poczekalnia i przebieralnia', category: 'Gabinet' },
   { src: '/images/gallery/df-gabinet-002.jpg', alt: 'Gabinet terapeutyczny', category: 'Gabinet' },
   { src: '/images/gallery/df-sprzet-001.jpg', alt: 'Strefa treningu medycznego', category: 'Sprzęt' },
   { src: '/images/gallery/df-sc-001.jpg', alt: 'Strefa ćwiczeń funkcjonalnych', category: 'Strefa ćwiczeń' },
   { src: '/images/gallery/df-gabinet-003.jpg', alt: 'Gabinet terapii manualnej', category: 'Gabinet' },
   { src: '/images/gallery/df-konsultacje-001.jpg', alt: 'Sala konsultacyjna', category: 'Konsultacje' },
-  { src: '/images/gallery/df-sprzet-002.jpg', alt: 'Nowoczesna aparatura', category: 'Sprzęt' },
+  { src: '/images/gallery/df-sprzet-002.jpg', alt: 'Bieżnia do analizy biegu', category: 'Sprzęt' },
 ]
 
 const categories = ['Wszystkie', 'Placówka', 'Gabinet', 'Sprzęt', 'Strefa ćwiczeń', 'Konsultacje']
