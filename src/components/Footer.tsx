@@ -27,6 +27,7 @@ const quickLinks = [
 
 export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+  const currentYear = new Date().getFullYear()
 
   return (
     <footer className='relative overflow-hidden bg-[#02111e] text-slate-200'>
@@ -99,7 +100,7 @@ export default function Footer() {
 
       <div className='relative border-t border-slate-800/60 bg-[#010b16]/70 py-6 text-xs uppercase tracking-[0.35em] text-slate-500'>
         <div className='container flex flex-col items-center justify-between gap-3 text-center md:flex-row'>
-          <span>&copy; {new Date().getFullYear()} Dobry Fizjo. Wszystkie prawa zastrzeżone.</span>
+          <span>&copy; {currentYear} Dobry Fizjo. Wszystkie prawa zastrzeżone.</span>
           <span className='flex items-center gap-2'>
             Stworzone z <Heart className='h-4 w-4 text-amber-400' /> w Białymstoku
           </span>

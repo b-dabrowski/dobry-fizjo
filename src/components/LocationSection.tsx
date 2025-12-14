@@ -1,13 +1,9 @@
 'use client'
 
-import {
-  Accessibility,
-  Bus,
-  Car,
+import {  
   Clock,
   Mail,
   MapPin,
-  Navigation,
   Phone,
 } from 'lucide-react'
 
@@ -62,11 +58,7 @@ export default function LocationSection() {
                     ul. Wiadukt 5 lok.h2, 15-327 Białystok
                     <br />
                     dzielnica Dojlidy
-                  </p>
-                  <button className='inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em] text-emerald-200 transition hover:gap-3 hover:text-amber-200'>
-                    <Navigation className='h-4 w-4' />
-                    Wyznacz trasę
-                  </button>
+                  </p>                  
                 </div>
               </div>
             </div>

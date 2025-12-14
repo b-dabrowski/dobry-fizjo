@@ -101,8 +101,15 @@ export default function ServicesSection() {
             <p className="mb-6 text-slate-400">
               Podczas pierwszej konsultacji wykonamy pełną diagnostykę funkcjonalną i zaprojektujemy kinetyczny plan
               powrotu do ruchu bez bólu.
-            </p>
-            <button className="btn-primary">Umów konsultację</button>
+            </p>            
+            <a
+            href="https://www.znanylekarz.pl/przemyslaw-wielemborek/fizjoterapeuta/bialystok"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary inline-block"
+          >
+            Umów konsultację
+          </a>     
           </div>
         </div>
       </div>

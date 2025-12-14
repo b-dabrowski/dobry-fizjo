@@ -111,7 +111,7 @@ export default function TestimonialsSection() {
               wyniki.
             </p>
 
-            <div className="grid grid-cols-2 gap-6 text-xs uppercase tracking-[0.4em] text-slate-500 md:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 text-xs uppercase tracking-[0.4em] text-slate-500 sm:grid-cols-2 md:grid-cols-3">
               {['Poleciłoby znajomym', 'Profesjonalna obsługa', 'Higiena i komfort'].map((item) => (
                 <div key={item}>
                   <div className="text-lg font-semibold text-emerald-200">100%</div>
