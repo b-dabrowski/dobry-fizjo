@@ -1,40 +1,11 @@
 'use client'
 
-import {
-  Accessibility,
-  Bus,
-  Car,
+import {  
   Clock,
   Mail,
   MapPin,
-  Navigation,
   Phone,
 } from 'lucide-react'
-
-const highlights = [
-  {
-    icon: <Car className='h-8 w-8' />,
-    title: 'Bezpłatny parking',
-    description: 'Ponad 50 miejsc parkingowych na terenie obiektu, również dla osób z niepełnosprawnościami.',
-  },
-  {
-    icon: <Bus className='h-8 w-8' />,
-    title: 'Komunikacja miejska',
-    description: 'Linie 15, 22 i 34 zatrzymują się przy klinice. Dojazd z centrum zajmuje 12 minut.',
-  },
-  {
-    icon: <Accessibility className='h-8 w-8' />,
-    title: 'Pełna dostępność',
-    description: 'Podjazdy, windy i gabinety przystosowane do wózków oraz funkcjonalna toaleta.',
-  },
-]
-
-const nearbyPoints = [
-  { icon: '🏥', title: 'Szpital Miejski', distance: '0,5 km' },
-  { icon: '🏪', title: 'Apteka całodobowa', distance: '0,2 km' },
-  { icon: '☕', title: 'Kawiarnia', distance: '0,3 km' },
-  { icon: '🚇', title: 'Przystanek autobusowy', distance: '150 m' },
-]
 
 export default function LocationSection() {
   return (
@@ -87,11 +58,7 @@ export default function LocationSection() {
                     ul. Wiadukt 5 lok.h2, 15-327 Białystok
                     <br />
                     dzielnica Dojlidy
-                  </p>
-                  <button className='inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em] text-emerald-200 transition hover:gap-3 hover:text-amber-200'>
-                    <Navigation className='h-4 w-4' />
-                    Wyznacz trasę
-                  </button>
+                  </p>                  
                 </div>
               </div>
             </div>
@@ -105,21 +72,18 @@ export default function LocationSection() {
                   <h3 className='text-lg font-semibold text-slate-100'>Godziny pracy</h3>
                   <div className='mt-4 space-y-2 text-slate-400'>
                     <div className='flex justify-between'>
-                      <span>Poniedziałek – Piątek</span>
-                      <span className='font-semibold text-slate-100'>7:00 – 19:00</span>
+                      <span>Poniedziałek, Piątek</span>
+                      <span className='font-semibold text-slate-100'>8:45 - 16:15</span>
                     </div>
                     <div className='flex justify-between'>
-                      <span>Sobota</span>
-                      <span className='font-semibold text-slate-100'>8:00 – 16:00</span>
+                      <span>Wtorek, Środa, Czwartek</span>
+                      <span className='font-semibold text-slate-100'>10:30 - 18:00</span>
                     </div>
                     <div className='flex justify-between'>
-                      <span>Niedziela</span>
+                      <span>Weekend</span>
                       <span className='font-semibold text-slate-100'>Nieczynne</span>
                     </div>
-                  </div>
-                  <div className='mt-4 rounded-2xl border border-emerald-300/30 bg-emerald-400/10 p-3 text-xs uppercase tracking-[0.35em] text-emerald-100'>
-                    Wsparcie telefoniczne 24/7 w nagłych przypadkach.
-                  </div>
+                  </div>                  
                 </div>
               </div>
             </div>
@@ -149,38 +113,7 @@ export default function LocationSection() {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className='mt-16 grid grid-cols-1 gap-8 md:grid-cols-3'>
-          {highlights.map((highlight) => (
-            <div
-              key={highlight.title}
-              className='rounded-[2.5rem] border border-emerald-300/25 bg-[#052235]/80 p-8 text-center text-slate-200 shadow-[0_34px_90px_-45px_rgba(20,184,166,0.6)] transition hover:-translate-y-1 hover:border-emerald-200/50'
-            >
-              <div className='mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-emerald-300/40 bg-emerald-300/15 text-emerald-200'>
-                {highlight.icon}
-              </div>
-              <h3 className='text-lg font-semibold text-slate-100'>{highlight.title}</h3>
-              <p className='mt-2 text-sm text-slate-400'>{highlight.description}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className='mt-16 rounded-[2.75rem] border border-emerald-300/25 bg-[#05263c]/80 p-10 text-slate-200 shadow-[0_45px_95px_-48px_rgba(20,184,166,0.6)] backdrop-blur'>
-          <h3 className='mb-6 text-center text-2xl font-semibold text-slate-100'>W pobliżu</h3>
-          <div className='grid grid-cols-1 gap-6 text-center md:grid-cols-2 lg:grid-cols-4'>
-            {nearbyPoints.map((point) => (
-              <div
-                key={point.title}
-                className='rounded-[2rem] border border-emerald-300/25 bg-[#041f31]/85 p-6 shadow-[0_30px_80px_-48px_rgba(249,115,22,0.55)]'
-              >
-                <div className='text-3xl'>{point.icon}</div>
-                <h4 className='mt-4 font-semibold text-slate-100'>{point.title}</h4>
-                <p className='text-sm text-slate-400'>{point.distance}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        </div>        
       </div>
     </section>
   )

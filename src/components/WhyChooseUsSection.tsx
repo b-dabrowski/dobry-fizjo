@@ -5,15 +5,14 @@ import {
   Target, 
   Stethoscope, 
   Award, 
-  Shield,
   Clock
 } from 'lucide-react'
 
 const benefits = [
   {
     icon: Users,
-    title: 'Doświadczony zespół',
-    description: 'Certyfikowani terapeuci z ponad 15-letnim doświadczeniem w rehabilitacji.'
+    title: 'Doświadczenie',
+    description: 'Fizjoterapeuta z wieloletnim stażem indywidualnej pracy z pacjentem.'
   },
   {
     icon: Target,
@@ -28,17 +27,12 @@ const benefits = [
   {
     icon: Award,
     title: 'Certyfikowana jakość',
-    description: 'Certyfikowany gabinet i sprawdzone metody terapii.'
-  },
-  {
-    icon: Shield,
-    title: 'Akceptujemy ubezpieczenia',
-    description: 'Współpracujemy z większością ubezpieczycieli, by zapewnić dostępność usług.'
+    description: 'Ukończone szkolenia między innymi metody Maitlanda oraz Neurodynamic Solutions.'
   },
   {
     icon: Clock,
     title: 'Elastyczne godziny',
-    description: 'Dogodne terminy wizyt, także wieczorami i w weekendy.'
+    description: 'Wygodne umawianie wizyt przez telefon i internetowo.'
   }
 ]
 
@@ -66,12 +60,11 @@ export default function WhyChooseUsSection() {
             Dlaczego warto wybrać <span className="text-gradient">Dobry Fizjo</span>
           </h2>
           <p className="mx-auto max-w-3xl text-xl text-slate-400">
-            Energetyczne protokoły terapii, które aktywują ruch, wzmacniają ciało i przywracają płynność w każdym
-            kroku.
+            Terapia oparta na doświadczeniu, wiedzy i certyfikowanych metodach.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5">
           {benefits.map((benefit, index) => (
             <div
               key={index}
@@ -90,21 +83,6 @@ export default function WhyChooseUsSection() {
           ))}
         </div>
 
-        <div className="mt-20 overflow-hidden rounded-[2.75rem] border border-emerald-300/25 bg-[#05263c]/85 p-8 md:p-12 shadow-[0_40px_90px_-45px_rgba(20,184,166,0.6)] backdrop-blur">
-          <div className="grid grid-cols-2 gap-10 text-center text-slate-200 md:grid-cols-4">
-            {[
-              { label: 'Satysfakcja pacjentów', value: '98%' },
-              { label: 'Lat doświadczenia', value: '15+' },
-              { label: 'Skutecznych terapii', value: '5000+' },
-              { label: 'Wsparcie awaryjne', value: '24/7' },
-            ].map((item) => (
-              <div key={item.label} className="space-y-3">
-                <div className="text-4xl font-bold text-emerald-200">{item.value}</div>
-                <div className="text-xs font-semibold uppercase tracking-[0.45em] text-slate-500">{item.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   )

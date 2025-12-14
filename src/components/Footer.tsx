@@ -4,28 +4,22 @@ import {
   ArrowUp,
   Clock,
   Facebook,
-  Heart,
-  Instagram,
-  Linkedin,
+  Heart,  
   Mail,
   MapPin,
-  Phone,
-  Twitter,
+  Phone,  
   Youtube,
 } from 'lucide-react'
 
 const socialLinks = [
-  { label: 'Facebook', href: 'https://facebook.com/', icon: Facebook },
-  { label: 'Instagram', href: 'https://instagram.com/', icon: Instagram },
-  { label: 'LinkedIn', href: 'https://linkedin.com/', icon: Linkedin },
-  { label: 'YouTube', href: 'https://youtube.com/', icon: Youtube },
-  { label: 'Twitter', href: 'https://twitter.com/', icon: Twitter },
+  { label: 'Facebook', href: 'https://www.facebook.com/primo.wi', icon: Facebook },    
+  { label: 'YouTube', href: 'https://www.youtube.com/@DobryFizjoPrzemyslaw', icon: Youtube },  
 ]
 
 const quickLinks = [
   { label: 'Usługi', href: '#services' },
   { label: 'Proces terapii', href: '#why-choose-us' },
-  { label: 'Zespół', href: '#about-team' },
+  { label: 'O mnie', href: '#about-team' },
   { label: 'Cennik', href: '#pricing' },
   { label: 'Blog', href: '#blog' },
   { label: 'Kontakt', href: '#location' },
@@ -33,6 +27,7 @@ const quickLinks = [
 
 export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+  const currentYear = new Date().getFullYear()
 
   return (
     <footer className='relative overflow-hidden bg-[#02111e] text-slate-200'>
@@ -42,7 +37,7 @@ export default function Footer() {
       </div>
 
       <div className='container relative z-10 grid gap-12 py-16 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)_minmax(0,1fr)]'>
-        <div className='space-y-6'>
+        <div className='space-y-6 py-8'>
           <h3 className='text-3xl font-semibold text-slate-100'>Dobry Fizjo</h3>
           <p className='max-w-md text-slate-400'>
             Energetyczne podejście do terapii, które łączy diagnostykę funkcjonalną, manualną precyzję i trening
@@ -61,14 +56,17 @@ export default function Footer() {
               <MapPin className='h-4 w-4 text-emerald-200' />
               ul. Wiadukt 5 lok.h2, 15-327 Białystok
             </span>
-            <span className='flex items-center gap-3 text-slate-400'>
+            <span className='flex items-start gap-3 text-slate-400'>
               <Clock className='h-4 w-4 text-emerald-200' />
-              Pon-Pt 7:00-19:00 · Sobota 8:00-16:00
+              <span className='flex flex-col leading-tight'>
+                <span>Poniedziałek, Piątek 8:45 - 16:15</span>
+                <span>Wtorek, Środa, Czwartek 10:30 - 18:00</span>
+              </span>
             </span>
           </div>
         </div>
 
-        <div>
+        <div className='py-8'>
           <h4 className='text-xs font-semibold uppercase tracking-[0.4em] text-slate-500'>Nawigacja</h4>
           <nav className='mt-6 grid gap-3 text-sm text-slate-300'>
             {quickLinks.map((link) => (
@@ -79,7 +77,7 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div>
+        <div className='py-8'>
           <h4 className='text-xs font-semibold uppercase tracking-[0.4em] text-slate-500'>Bądźmy w kontakcie</h4>
           <p className='mt-6 text-sm text-slate-400'>
             Dołącz do społeczności skupionej wokół świadomego ruchu. Najnowsze treści, warsztaty i wskazówki – prosto do
@@ -102,7 +100,7 @@ export default function Footer() {
 
       <div className='relative border-t border-slate-800/60 bg-[#010b16]/70 py-6 text-xs uppercase tracking-[0.35em] text-slate-500'>
         <div className='container flex flex-col items-center justify-between gap-3 text-center md:flex-row'>
-          <span>&copy; {new Date().getFullYear()} Dobry Fizjo. Wszystkie prawa zastrzeżone.</span>
+          <span>&copy; {currentYear} Dobry Fizjo. Wszystkie prawa zastrzeżone.</span>
           <span className='flex items-center gap-2'>
             Stworzone z <Heart className='h-4 w-4 text-amber-400' /> w Białymstoku
           </span>

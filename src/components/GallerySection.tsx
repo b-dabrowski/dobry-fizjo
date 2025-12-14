@@ -5,13 +5,13 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 const galleryImages = [
   { src: '/images/gallery/df-placowka-001.jpg', alt: 'Fasada kliniki', category: 'Placówka' },
-  { src: '/images/gallery/df-gabinet-001.jpg', alt: 'Recepcja i strefa relaksu', category: 'Gabinet' },
+  { src: '/images/gallery/df-gabinet-001.jpg', alt: 'Poczekalnia i przebieralnia', category: 'Gabinet' },
   { src: '/images/gallery/df-gabinet-002.jpg', alt: 'Gabinet terapeutyczny', category: 'Gabinet' },
   { src: '/images/gallery/df-sprzet-001.jpg', alt: 'Strefa treningu medycznego', category: 'Sprzęt' },
   { src: '/images/gallery/df-sc-001.jpg', alt: 'Strefa ćwiczeń funkcjonalnych', category: 'Strefa ćwiczeń' },
   { src: '/images/gallery/df-gabinet-003.jpg', alt: 'Gabinet terapii manualnej', category: 'Gabinet' },
   { src: '/images/gallery/df-konsultacje-001.jpg', alt: 'Sala konsultacyjna', category: 'Konsultacje' },
-  { src: '/images/gallery/df-sprzet-002.jpg', alt: 'Nowoczesna aparatura', category: 'Sprzęt' },
+  { src: '/images/gallery/df-sprzet-002.jpg', alt: 'Bieżnia do analizy biegu', category: 'Sprzęt' },
 ]
 
 const categories = ['Wszystkie', 'Placówka', 'Gabinet', 'Sprzęt', 'Strefa ćwiczeń', 'Konsultacje']
@@ -151,12 +151,11 @@ export default function GallerySection() {
           </div>
         )}
 
-        <div className="mt-16 grid grid-cols-1 gap-6 rounded-[2.75rem] border border-emerald-300/25 bg-[#05263c]/85 p-10 text-slate-200 shadow-[0_45px_95px_-45px_rgba(20,184,166,0.6)] backdrop-blur md:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-6 rounded-[2.75rem] border border-emerald-300/25 bg-[#05263c]/85 p-10 text-slate-200 shadow-[0_45px_95px_-45px_rgba(20,184,166,0.6)] backdrop-blur md:grid-cols-3">
           {[
             { icon: '🏥', title: 'Nowoczesny sprzęt', description: 'Zaawansowane systemy diagnostyki i rehabilitacji.' },
-            { icon: '🧬', title: 'Biomechanika', description: 'Analiza ruchu z użyciem czujników i kamer HD.' },
+            { icon: '🧬', title: 'Biomechanika', description: 'Analiza biegu.' },
             { icon: '🧘', title: 'Strefa treningu', description: 'Dedykowane miejsce do pracy nad mobilnością i siłą.' },
-            { icon: '☕', title: 'Strefa regeneracji', description: 'Przestrzeń relaksu po intensywnej terapii.' },
           ].map((feature) => (
             <div key={feature.title} className="rounded-3xl border border-emerald-300/25 bg-[#041f31]/85 p-6 text-center shadow-[0_28px_70px_-42px_rgba(249,115,22,0.55)]">
               <div className="text-3xl">{feature.icon}</div>

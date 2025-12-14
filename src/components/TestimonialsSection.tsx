@@ -78,10 +78,6 @@ export default function TestimonialsSection() {
               key={index}
               className="group relative overflow-hidden rounded-3xl border border-emerald-300/30 bg-[#052235]/85 p-8 shadow-[0_34px_80px_-42px_rgba(20,184,166,0.65)] transition duration-300 hover:-translate-y-1 hover:border-emerald-200/60 hover:bg-[#062a41]/90 hover:shadow-[0_40px_85px_-40px_rgba(249,115,22,0.55)]"
             >
-              <div className="absolute -top-5 -left-5 flex h-12 w-12 items-center justify-center rounded-full border border-emerald-300/40 bg-emerald-300/15 text-emerald-100">
-                <Quote className="h-5 w-5" />
-              </div>
-
               <div className="mb-4">
                 <StarRating rating={testimonial.rating} />
               </div>
@@ -115,8 +111,8 @@ export default function TestimonialsSection() {
               wyniki.
             </p>
 
-            <div className="grid grid-cols-2 gap-6 text-xs uppercase tracking-[0.4em] text-slate-500 md:grid-cols-4">
-              {['Poleciłoby znajomym', 'Powrót do ruchu', 'Profesjonalna obsługa', 'Higiena i komfort'].map((item) => (
+            <div className="grid grid-cols-1 gap-6 text-xs uppercase tracking-[0.4em] text-slate-500 sm:grid-cols-2 md:grid-cols-3">
+              {['Poleciłoby znajomym', 'Profesjonalna obsługa', 'Higiena i komfort'].map((item) => (
                 <div key={item}>
                   <div className="text-lg font-semibold text-emerald-200">100%</div>
                   <div>{item}</div>
@@ -126,12 +122,15 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <h3 className="mb-4 text-2xl font-semibold text-slate-100">Gotowy, aby ruszyć z energią?</h3>
-          <p className="mb-6 text-slate-400">
-            Dołącz do pacjentów, którzy na nowo odkryli swobodę ruchu i pewność własnego ciała.
-          </p>
-          <button className="btn-primary">Umów konsultację już dziś</button>
+        <div className="mt-12 text-center">          
+          <a
+            href="https://www.znanylekarz.pl/przemyslaw-wielemborek/fizjoterapeuta/bialystok"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary inline-block"
+          >
+            Umów konsultację już dziś
+          </a>          
         </div>
       </div>
     </section>

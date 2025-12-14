@@ -7,18 +7,17 @@ const teamMembers = [
     name: 'Przemysław Wielemborek',
     title: 'Fizjoterapeuta i Rehabilitant',
     specialties: ['Terapia Manualna Maitland', 'Trening Medyczny', 'IASTM', 'Kinesiotaping', 'Neuromobilizacja'],
-    qualifications: 'Absolwent Uniwersytetu Medycznego w Białymstoku, Doktorant',
-    // experience: 'Kilka lat doświadczenia',
+    qualifications: 'Absolwent Uniwersytetu Medycznego w Białymstoku, Doktorant',    
     image: '/images/team/przemek.jpg',
     bio: 'Od lat pomagam pacjentom w odzyskaniu sprawności, redukcji bólu i powrocie do aktywności. Stale podnoszę swoje kwalifikacje, uczestnicząc w kursach i szkoleniach z zakresu terapii manualnej, rehabilitacji i treningu medycznego.',
     email: 'pt.wielemborek@gmail.com',
     phone: '506 439 462',
     courses: [
-      'Terapia manualna według koncepcji Maitland (poziomy 1, 2a i 2b)',
+      'Terapia manualna według koncepcji Maitland (poziomy 1, 2a i 2b i 3)',
       'Practical Program Design Mastery – programowanie treningu',
-      'IASTM – terapia narzędziowa',
+      'Neurodynamika Kliniczna',
       'Kinesiotaping',
-      'Postępowanie fizjoterapeutyczne w terapii blizn',
+      'Kettlebells for health - tening kettlebell w fizjoterapii',
       'Flossing & Cupping',
       'Masaż tkanek głębokich'
     ]
@@ -49,8 +48,7 @@ export default function AboutTeamSection() {
             O <span className="text-gradient">Mnie</span>
           </h2>
           <p className="mx-auto max-w-3xl text-xl text-slate-400">
-            Jestem fizjoterapeutą, który łączy analityczną diagnostykę z kinetycznym podejściem do ruchu. Każda sesja to
-            energia, precyzja i realny progres.
+            Jestem fizjoterapeutą, który łączy analityczną diagnostykę z kinetycznym podejściem do ruchu.
           </p>
         </div>
 
@@ -110,36 +108,18 @@ export default function AboutTeamSection() {
                         </li>
                       ))}
                     </ul>
-                  </div>
-
-                  <div className="mt-6 flex flex-col justify-center gap-2 text-sm text-emerald-200 md:flex-row md:justify-start">
-                    <a
-                      href={`mailto:${member.email}`}
-                      className="inline-flex items-center gap-2 rounded-full border border-emerald-300/30 bg-transparent px-4 py-2 transition hover:border-amber-300/40 hover:text-amber-200"
-                    >
-                      <Mail className="h-4 w-4" />
-                      Email
-                    </a>
-                    <a
-                      href={`tel:${member.phone}`}
-                      className="inline-flex items-center gap-2 rounded-full border border-emerald-300/30 bg-transparent px-4 py-2 transition hover:border-amber-300/40 hover:text-amber-200"
-                    >
-                      <Phone className="h-4 w-4" />
-                      Call
-                    </a>
-                  </div>
+                  </div>            
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 rounded-[2.75rem] border border-emerald-300/25 bg-[#05263c]/85 p-10 text-center text-slate-200 shadow-[0_45px_95px_-48px_rgba(20,184,166,0.7)] backdrop-blur md:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-6 rounded-[2.75rem] border border-emerald-300/25 bg-[#05263c]/85 p-10 text-center text-slate-200 shadow-[0_45px_95px_-48px_rgba(20,184,166,0.7)] backdrop-blur md:grid-cols-3">
           {[
             { label: 'Ukończonych Kursów', value: '7+' },
             { label: 'Manual Mastery', value: 'Maitland' },
-            { label: 'Indywidualne Podejście', value: '100%' },
-            { label: 'Wsparcie', value: '24/7' },
+            { label: 'Indywidualne Podejście', value: '100%' },            
           ].map((stat) => (
             <div key={stat.label} className="space-y-3">
               <div className="text-3xl font-semibold text-emerald-200">{stat.value}</div>

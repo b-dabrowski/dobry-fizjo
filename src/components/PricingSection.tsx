@@ -6,11 +6,11 @@ const pricingPlans = [
   {
     name: 'Diagnoza startowa',
     price: '220 zł',
-    duration: '60 minut',
+    duration: '45 minut',
     description: 'Kompleksowa ocena funkcjonalna i mapa priorytetów terapeutycznych.',
     features: [
       'Analiza ruchu i testy funkcjonalne',
-      'Plan kinetycznej terapii krok po kroku',
+      'Plan terapii krok po kroku',
       'Program ćwiczeń do domu',
       'Rekomendacje sprzętowe i regeneracyjne',
     ],
@@ -19,7 +19,7 @@ const pricingPlans = [
   {
     name: 'Sesja terapeutyczna',
     price: '220 zł',
-    duration: '45-60 minut',
+    duration: '45 minut',
     description: 'Połączenie terapii manualnej, neuromobilizacji i treningu medycznego.',
     features: [
       'Indywidualny protokół zabiegowy',
@@ -57,8 +57,7 @@ export default function PricingSection() {
             Przejrzysty <span className='text-gradient'>Cennik</span>
           </h2>
           <p className='mx-auto max-w-3xl text-xl text-slate-400'>
-            Wysoka intensywność pracy, nowoczesna diagnostyka i indywidualny plan kinezyterapii w uczciwych, prostych
-            pakietach cenowych.
+            Bez kosztów dodatkowych niezależnie od wykorzystanych metod i urządzeń.
           </p>
         </div>
 
@@ -70,14 +69,6 @@ export default function PricingSection() {
                 plan.popular ? 'md:scale-105' : ''
               }`}
             >
-              {plan.popular && (
-                <div className='absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2'>
-                  <span className='rounded-full border border-emerald-300/50 bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-400 px-6 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-slate-900 shadow-[0_20px_45px_-25px_rgba(20,184,166,0.75)]'>
-                    Najczęściej wybierana
-                  </span>
-                </div>
-              )}
-
               <div className='mb-6 text-center'>
                 <h3 className='text-xl font-semibold text-slate-100'>{plan.name}</h3>
                 <div className='mt-2 text-4xl font-bold text-emerald-200'>{plan.price}</div>
@@ -94,15 +85,18 @@ export default function PricingSection() {
                 ))}
               </ul>
 
-              <button
-                className={`w-full rounded-full px-6 py-3 text-xs font-semibold uppercase tracking-[0.4em] transition ${
+              <a
+                href="https://www.znanylekarz.pl/przemyslaw-wielemborek/fizjoterapeuta/bialystok"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-full rounded-full px-6 py-3 text-center text-xs font-semibold uppercase tracking-[0.4em] transition ${
                   plan.popular
                     ? 'bg-gradient-to-r from-emerald-400 via-teal-400 to-amber-400 text-slate-900 shadow-[0_24px_60px_-30px_rgba(20,184,166,0.85)] hover:shadow-[0_28px_70px_-32px_rgba(249,115,22,0.6)]'
                     : 'border border-emerald-300/40 bg-[#041e30]/80 text-emerald-200 hover:border-emerald-300/60 hover:text-emerald-100'
                 }`}
               >
                 Umów wizytę
-              </button>
+              </a>
             </div>
           ))}
         </div>
@@ -139,14 +133,15 @@ export default function PricingSection() {
               <Phone className='h-4 w-4' />
               Zadzwoń
             </a>
-            <a href='mailto:pt.wielemborek@gmail.com' className='btn-secondary flex items-center justify-center gap-2'>
-              <Mail className='h-4 w-4' />
-              Napisz
-            </a>
-            <button className='btn-secondary flex items-center justify-center gap-2'>
+            <a
+              href="https://www.znanylekarz.pl/przemyslaw-wielemborek/fizjoterapeuta/bialystok"
+              target="_blank"
+              rel="noopener noreferrer"
+              className='btn-secondary flex items-center justify-center gap-2'
+            >
               <Calendar className='h-4 w-4' />
               Zarezerwuj
-            </button>
+            </a>
           </div>
 
           <p className='mt-6 text-xs text-slate-600'>
